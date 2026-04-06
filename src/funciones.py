@@ -1,4 +1,32 @@
-# Funciones del ejercicio 10
+######        Funciones del ejercicio 1        ######
+
+def procesar_text (text):
+    lineas = text.split("\n")  # Separa en líneas
+    cant_lineas = len(lineas)
+    total_palabras = 0
+
+    # Calcula la cantidad total de palabras
+    for linea in lineas:
+        palabras = linea.split()
+        total_palabras += len(palabras)
+
+    promedio = total_palabras / cant_lineas    # Promedio de palabras por línea
+    lineas_mayores = []    
+
+    # Lineas por encima del promedio
+    for linea in lineas:
+        palabras = linea.split()
+        if len(palabras) > promedio:
+            lineas_mayores.append(linea)
+
+    return {
+        "lineas": cant_lineas,
+        "palabras": total_palabras,
+        "promedio": promedio,
+        "mayores": lineas_mayores
+    }    
+
+######        Funciones del ejercicio 10        ######  
 
 def calcular_puntaje (scores):
     resultados = {}
@@ -65,5 +93,3 @@ def imprimir_tabla_final(data):
         promedio = sum(stats["rondas"]) / len(stats["rondas"])
 
         print(f"{nombre:<12} {stats['total']:<10} {stats['rondas_ganadas']:<10} {stats['mejor_ronda']:<10} {round(promedio,1)}")
-
-    
