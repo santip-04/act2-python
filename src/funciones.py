@@ -1,4 +1,4 @@
-######        Funciones del ejercicio 1        ######
+##############        Funciones del ejercicio 1        ##############
 
 def procesar_text (text):
     lineas = text.split("\n")  # Separa en líneas
@@ -26,7 +26,7 @@ def procesar_text (text):
         "mayores": lineas_mayores
     }    
 
-######        Funciones del ejercicio 2         ######
+##############        Funciones del ejercicio 2         ###############
 
 def procesar_playlist (playlist):
     total_segundos = 0
@@ -59,7 +59,31 @@ def procesar_playlist (playlist):
         "corta": cancion_corta
     }
 
-######        Funciones del ejercicio 10        ######  
+##############        Funciones del ejercicio 3         ##############
+
+def limpiar_palabra(palabra):
+    return palabra.lower().strip(".,!¿?")
+
+def censurar_palabra(palabra):
+    return "*" * len(palabra)
+
+def filtrar_spoilers(review, spoilers_input):
+    spoilers = [palabra.strip().lower() for palabra in spoilers_input.split(",")]
+
+    palabras = review.split()
+    resultado = []
+
+    for palabra in palabras:
+        palabra_limpia = limpiar_palabra(palabra)
+
+        if palabra_limpia in spoilers:
+            resultado.append(censurar_palabra(palabra))
+        else:
+            resultado.append(palabra)
+
+    return " ".join(resultado)
+
+##############        Funciones del ejercicio 10        ##############  
 
 def calcular_puntaje (scores):
     resultados = {}
