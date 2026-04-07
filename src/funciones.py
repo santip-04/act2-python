@@ -26,6 +26,39 @@ def procesar_text (text):
         "mayores": lineas_mayores
     }    
 
+######        Funciones del ejercicio 2         ######
+
+def procesar_playlist (playlist):
+    total_segundos = 0
+    max_duracion = 0
+    min_duracion = float("inf") # Inicializo en un valor infinito
+
+    cancion_larga = None
+    cancion_corta = None
+
+    for song in playlist:
+        minutos, segundos = song["duration"].split(":")
+        duracion = int(minutos) * 60 + int(segundos)
+        total_segundos += duracion   # Suma el total de segundos
+
+        if duracion > max_duracion:    # Canción más larga
+            max_duracion = duracion
+            cancion_larga = song
+
+        if duracion < min_duracion:    # Canción más corta
+            min_duracion = duracion
+            cancion_corta = song
+
+    # Convertir total a minutos y segundos
+    total_min = total_segundos // 60  
+    total_seg = total_segundos % 60
+
+    return {
+        "total": (total_min, total_seg),
+        "larga": cancion_larga,
+        "corta": cancion_corta
+    }
+
 ######        Funciones del ejercicio 10        ######  
 
 def calcular_puntaje (scores):
