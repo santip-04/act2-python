@@ -83,6 +83,37 @@ def filtrar_spoilers(review, spoilers_input):
 
     return " ".join(resultado)
 
+##############        Funciones del ejercicio 4         ##############
+
+def tiene_un_solo_arroba(email):
+    return email.count("@") == 1
+
+def separar_email(email):   # Separa usuario y dominio
+    return email.split("@")
+
+def vaildar_usuario(usuario):
+    return len(usuario) > 0
+
+def validar_dominio(dominio):
+    return "." in dominio and not dominio.startswith(".") and not dominio.endswith(".")
+
+def email_valido(email):
+    if " " in email:
+        return False
+    
+    if not tiene_un_solo_arroba(email):
+        return False
+    
+    usuario, dominio = separar_email(email)
+
+    if not vaildar_usuario(usuario):
+        return False
+    
+    if not validar_dominio(dominio):
+        return False
+    
+    return True
+
 ##############        Funciones del ejercicio 10        ##############  
 
 def calcular_puntaje (scores):
